@@ -20,8 +20,8 @@ public class TestDecorator {
 
     @Test
     public void testDoDamage(){
-        m.doDamage(9);
+        m.doDamage(5);
         Assert.assertTrue("Диапазон урона неверно ограничен снизу!", arrow.currentDamage >= 10);
-        Assert.assertTrue("Диапазон урона неверно ограничен сверху!", arrow.currentDamage <= 60);
+        Assert.assertTrue("Диапазон урона неверно ограничен сверху!", arrow.currentDamage <= 0);
     }
 }
