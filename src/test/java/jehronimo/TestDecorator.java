@@ -3,6 +3,7 @@
  */
 package jehronimo;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,9 +20,24 @@ public class TestDecorator {
     }
 
     @Test
-    public void testDoDamage(){
-        m.doDamage(5);
+    public void testDoDamageRange(){
+        m.doDamage(0);
         Assert.assertTrue("Диапазон урона неверно ограничен снизу!", arrow.currentDamage >= 10);
-        Assert.assertTrue("Диапазон урона неверно ограничен сверху!", arrow.currentDamage <= 0);
+        Assert.assertTrue("Диапазон урона неверно ограничен сверху!", arrow.currentDamage <= 40);
+    }
+
+    @Test
+    public void testDoDamageRandom(){
+        int randomTestResult;
+        m.doDamage(0);
+        randomTestResult = 10 * arrow.currentDamage;
+        System.out.println(randomTestResult);
+        for (int i=0; i < 10; i++){
+            m.doDamage(0);
+            randomTestResult -= arrow.currentDamage;
+            System.out.println(arrow.currentDamage);
+        }
+        //System.out.println(randomTestResult);
+        Assert.assertTrue("Диапазон урона не выбирается случайно!", randomTestResult != 0);
     }
 }
